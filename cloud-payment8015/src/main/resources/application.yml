@@ -1,0 +1,9 @@
+server:
+  port: 8015
+
+spring:
+  application:
+    name: cloud-payment-service
+  cloud:
+    zookeeper:
+      connect-string: 101.133.213.84:2181
