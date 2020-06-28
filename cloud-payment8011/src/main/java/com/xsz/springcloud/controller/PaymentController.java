@@ -49,6 +49,10 @@ public class PaymentController {
         return Rsp.succ("*****查询结果为:"+payment.toString()+"server.port:"+serverPort,payment);
     }
 
+    @RequestMapping(value = "/lb")
+    public String getPayment(){
+        return serverPort;
+    }
 
 
 

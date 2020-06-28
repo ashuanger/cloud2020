@@ -68,11 +68,12 @@ public class PaymentController {
             log.info(serviceInstance.getServiceId()+"\t"+serviceInstance.getHost()+"\t"+
                     serviceInstance.getPort()+"\t"+serviceInstance.getUri());
         }
-
-
         return discoveryClient;
     }
 
-
+    @RequestMapping(value = "/lb")
+    public String getPayment(){
+        return serverPort;
+    }
 
 }
