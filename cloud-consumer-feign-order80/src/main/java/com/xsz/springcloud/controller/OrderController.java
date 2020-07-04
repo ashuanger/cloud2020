@@ -1,11 +1,12 @@
 package com.xsz.springcloud.controller;
 
 
+import com.xsz.springcloud.common.Rsp;
 import com.xsz.springcloud.entity.BaseResult;
 import com.xsz.springcloud.entity.Payment;
 import com.xsz.springcloud.service.PaymentFeignService;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
+
 
 import org.springframework.web.bind.annotation.*;
 
@@ -36,5 +37,11 @@ public class OrderController {
         return paymentFeignService.getPaymentById(id);
     }
 
+    @RequestMapping(value = "/payment/paymentFeignTimeOut",method= RequestMethod.GET)
+    public BaseResult paymentFeignTimeOut(){
 
+        
+
+        return Rsp.succ(paymentFeignService.paymentFeignTimeOut());
+    }
 }

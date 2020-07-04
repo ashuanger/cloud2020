@@ -22,4 +22,7 @@ public interface PaymentFeignService {
     @RequestMapping(value = "/payment/get/{id}",method = RequestMethod.GET)
     public BaseResult getPaymentById(@PathVariable("id") Long id);
 
+    @RequestMapping(value = "/payment/paymentFeignTimeOut")
+    public String paymentFeignTimeOut();
+
 }
