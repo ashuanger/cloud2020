@@ -11,7 +11,8 @@ eureka:
     fetch-registry: false
     service-url:
       #设置于Eureka server 交互的地址查询服务与注册服务都需要依赖这个地址
-      defaultZone: http://eureka6001.com:6001/eureka/
+#      defaultZone: http://eureka6001.com:6001/eureka/
+      defaultZone: http://eureka6000.com:6001/eureka/
 #  server:
 #    #关闭自我保护机制，保证不可用服务被及时剔除
 #    enable-self-preservation: false
