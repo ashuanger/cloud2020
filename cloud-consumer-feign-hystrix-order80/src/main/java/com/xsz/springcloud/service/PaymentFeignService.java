@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Component
-@FeignClient(value = "cloud-provider-hystrix-payment")
+@FeignClient(value = "cloud-provider-hystrix-payment",fallback = PaymentHystrixService.class)
 public interface PaymentFeignService {
 
     @RequestMapping(value = "/payment/hystrix/OK/{id}",method= RequestMethod.GET)

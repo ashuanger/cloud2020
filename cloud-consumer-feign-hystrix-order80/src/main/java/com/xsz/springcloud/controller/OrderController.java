@@ -1,5 +1,6 @@
 package com.xsz.springcloud.controller;
 
+import com.netflix.hystrix.contrib.javanica.annotation.DefaultProperties;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
 import com.xsz.springcloud.service.PaymentFeignService;
@@ -12,6 +13,7 @@ import javax.annotation.Resource;
 @RestController
 @Slf4j
 @RequestMapping(value = "/consumer")
+//@DefaultProperties(defaultFallback = "globalFallBack")
 public class OrderController {
 
 
@@ -25,12 +27,14 @@ public class OrderController {
 
 
     @RequestMapping(value = "/hystrix/TimeOut/{id}",method= RequestMethod.GET)
-    @HystrixCommand(fallbackMethod = "paymentTimeOutFallbackMethod",commandProperties={
-            @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds",value = "1500")
-    })
+//    @HystrixCommand
+    //    @HystrixCommand(fallbackMethod = "paymentTimeOutFallbackMethod",commandProperties={
+//            @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds",value = "1500")
+//    })
+//    @HystrixCommand
     public String TimeOut(@PathVariable("id") Integer id){
-        log.info("1233");
-        int age=10/0;
+//        log.info("1233");
+//        int age=10/0;
         return paymentFeignService.TimeOut(id);
     }
 
@@ -42,8 +46,11 @@ public class OrderController {
     }
 
 
+    //全局fallback
+    public String globalFallBack(){
+        log.info("globalFallBack异常处理");
+        return "服务器处理请求异常";
 
-
-
+    }
 
 }
