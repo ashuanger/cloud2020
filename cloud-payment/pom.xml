@@ -66,6 +66,13 @@
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
         </dependency>
+        <!--japidocs文档-->
+        <dependency>
+            <groupId>io.github.yedaxia</groupId>
+            <artifactId>japidocs</artifactId>
+            <version>1.4</version>
+        </dependency>
+
 
         <!--热部署-->
         <!--<dependency>-->

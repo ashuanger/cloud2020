@@ -6,11 +6,9 @@ import com.xsz.springcloud.entity.BaseResult;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import springcloud.service.PaymentService;
+import springcloud.service.PaymentService2;
 
 import javax.annotation.Resource;
 import java.util.UUID;
@@ -27,6 +25,9 @@ public class PaymentController {
     @Resource
     PaymentService paymentService;
 
+    @Resource
+    PaymentService2 paymentService2;
+
     /**
      * 正常
      * @param id
@@ -41,7 +42,7 @@ public class PaymentController {
     }
 
     /**
-     * 潮湿
+     * 超时
      * @param id
      * @return
      */
@@ -53,5 +54,29 @@ public class PaymentController {
     }
 
 
+    /**
+     * 服务熔断
+     * @param id
+     * @return
+     */
+    @GetMapping("/circuit/{id}")
+    public String circuit(@PathVariable("id") Integer id)
+    {
+        String result = paymentService.paymentCircuitBreaker(id);
+        log.info("****result: "+result);
+        return result;
+    }
 
+    /**
+     * 服务熔断2
+     * @param id
+     * @return
+     */
+    @GetMapping("/circuit2/{id}")
+    public String circuit2(@PathVariable("id") Integer id)
+    {
+        String result = paymentService2.paymentCircuitBreaker(id);
+        log.info("****result: "+result);
+        return result;
+    }
 }

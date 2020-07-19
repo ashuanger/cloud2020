@@ -18,6 +18,9 @@ import java.util.concurrent.TimeUnit;
 @RestController
 @Slf4j
 @RequestMapping(value = "/payment")
+/**
+ * 支付接口
+ */
 public class PaymentController {
 
     @Resource
@@ -29,6 +32,11 @@ public class PaymentController {
     @Resource
     private DiscoveryClient discoveryClient;
 
+    /**
+     * 新增支付
+     * @param payment 支付表实体
+     * @return
+     */
     @RequestMapping(value = "/add",method= RequestMethod.POST)
     public BaseResult add(@RequestBody Payment payment){
         int resultCount=paymentService.add(payment);
@@ -40,13 +48,21 @@ public class PaymentController {
         return Rsp.fail(resultCount);
     }
 
+    /**
+     * 获取支付列表
+     * @return
+     */
     @RequestMapping(value = "/getList",method= RequestMethod.GET)
     public BaseResult getList(){
 
         return Rsp.succ(paymentService.getPaymentList());
     }
 
-
+    /**
+     * 获取单个支付
+     * @param id 编号
+     * @return
+     */
     @RequestMapping(value = "/get/{id}",method = RequestMethod.GET)
     public BaseResult getPaymentById(@PathVariable("id") Long id){
 
@@ -55,8 +71,12 @@ public class PaymentController {
         return Rsp.succ("*****查询结果为:"+payment.toString()+"server.port:"+serverPort,payment);
     }
 
+    /**
+     * 获取服务列表
+     * @return
+     */
     @RequestMapping(value = "/discovery",method = RequestMethod.GET)
-    public Object discovery(){
+    public BaseResult discovery(){
 
         List<String> services=discoveryClient.getServices();
         for (String element:
@@ -69,14 +89,22 @@ public class PaymentController {
             log.info(serviceInstance.getServiceId()+"\t"+serviceInstance.getHost()+"\t"+
                     serviceInstance.getPort()+"\t"+serviceInstance.getUri());
         }
-        return discoveryClient;
+        return Rsp.succ(discoveryClient);
     }
 
+    /**
+     * 轮询
+     * @return
+     */
     @RequestMapping(value = "/lb")
     public String getPayment(){
         return serverPort;
     }
 
+    /**
+     * 超时控制
+     * @return
+     */
     @RequestMapping(value = "/paymentFeignTimeOut")
     public String paymentFeignTimeOut(){
         try {
