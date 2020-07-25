@@ -22,7 +22,9 @@
     <module>cloud-consumer-feign-order80</module>
     <module>cloud-provider-hystrix-payment8017</module>
     <module>cloud-consumer-feign-hystrix-order80</module>
-      <module>cloud-provider-hystrix-payment8018</module>
+    <module>cloud-provider-hystrix-payment8018</module>
+    <module>cloud-consumer-hystrix-dashboard-8080</module>
+      <module>cloud-geteway9000</module>
   </modules>
 
   <packaging>pom</packaging>
