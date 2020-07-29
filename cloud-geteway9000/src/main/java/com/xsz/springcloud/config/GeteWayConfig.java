@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Configuration;
 public class GeteWayConfig {
 
 
-    @Bean
+//    @Bean
     public RouteLocator routes(RouteLocatorBuilder routeLocatorBuilder){
         RouteLocatorBuilder.Builder routes=routeLocatorBuilder.routes();
 
