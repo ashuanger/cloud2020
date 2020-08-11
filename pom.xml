@@ -24,7 +24,11 @@
     <module>cloud-consumer-feign-hystrix-order80</module>
     <module>cloud-provider-hystrix-payment8018</module>
     <module>cloud-consumer-hystrix-dashboard-8080</module>
-      <module>cloud-geteway9000</module>
+    <module>cloud-geteway9000</module>
+    <module>cloud-config-center-3000</module>
+      <module>cloud-config-client-3001</module>
+    <module>cloud-config-client-3002</module>
+
   </modules>
 
   <packaging>pom</packaging>
