@@ -1,5 +1,5 @@
 server:
-  port: 3001
+  port: 3003
 
 spring:
   application:
@@ -17,6 +17,7 @@ eureka:
   client:
     service-url:
       defaultZone:  http://localhost:6000/eureka
+
 
 #rabbitmq相关配置
 rabbitmq:
