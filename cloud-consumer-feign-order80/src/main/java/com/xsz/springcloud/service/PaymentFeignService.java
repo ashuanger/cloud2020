@@ -4,10 +4,7 @@ import com.xsz.springcloud.entity.BaseResult;
 import com.xsz.springcloud.entity.Payment;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.stereotype.Component;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
 @Component
 @FeignClient(value = "CLOUD-PAYMENT-SERVICE")
@@ -25,4 +22,6 @@ public interface PaymentFeignService {
     @RequestMapping(value = "/payment/paymentFeignTimeOut")
     public String paymentFeignTimeOut();
 
+    @GetMapping(value = "/payment/zipkin")
+    public String paymentZipkin();
 }

@@ -44,4 +44,12 @@ public class OrderController {
 
         return Rsp.succ(paymentFeignService.paymentFeignTimeOut());
     }
+
+
+    @GetMapping("/payment/zipkin")
+    public String paymentZipkin()
+    {
+        String result = paymentFeignService.paymentZipkin();
+        return result;
+    }
 }
