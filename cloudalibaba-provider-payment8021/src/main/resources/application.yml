@@ -1,0 +1,16 @@
+server:
+  port: 8021
+
+spring:
+  cloud:
+    nacos:
+      discovery:
+        server-addr: http://localhost:8848/
+  application:
+    name: nacos-cloud-provider
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
