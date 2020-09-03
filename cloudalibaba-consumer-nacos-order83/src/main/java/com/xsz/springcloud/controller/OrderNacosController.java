@@ -1,5 +1,6 @@
 package com.xsz.springcloud.controller;
 
+import com.xsz.springcloud.service.PaymentService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,6 +21,9 @@ public class OrderNacosController
     @Resource
     private RestTemplate restTemplate;
 
+    @Resource
+    PaymentService paymentService;
+
     @Value("${service-url.nacos-user-service}")
     private String serverURL;
 
@@ -29,4 +33,11 @@ public class OrderNacosController
         return restTemplate.getForObject(serverURL+"/payment/nacos/"+id,String.class);
     }
 
+
+
+    @GetMapping(value = "/consumer/paymentFeignInfo/nacos/{id}")
+    public String paymentFeignInfo(@PathVariable("id") Long id)
+    {
+        return paymentService.getPayment(id);
+    }
 }
