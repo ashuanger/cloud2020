@@ -35,6 +35,7 @@
       <module>cloudalibaba-provider-payment8020</module>
       <module>cloudalibaba-provider-payment8021</module>
     <module>cloudalibaba-consumer-nacos-order83</module>
+      <module>springcloudalibaba-config-nacos-client3010</module>
   </modules>
 
   <packaging>pom</packaging>

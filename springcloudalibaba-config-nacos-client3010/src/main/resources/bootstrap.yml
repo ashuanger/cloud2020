@@ -1,0 +1,17 @@
+#nacos配置
+server:
+  port: 3010
+
+spring:
+  application:
+    name: nacos_config_client
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848 #nacos服务注册中心
+      config:
+        server-addr: localhost:8848 #nacos配置中心
+        file-extension: yaml #指定yaml格式的配置
+#        group: DEV_GROUP    #分组
+        group: TEST_GROUP    #分组
+        namespace: 716d27a3-32e0-4850-b4e2-1ab74aa93c53
