@@ -30,9 +30,9 @@ public class FlowLimitController {
     @GetMapping("/testD")
     public String testD()
     {
-        try { TimeUnit.SECONDS.sleep(1); } catch (InterruptedException e) { e.printStackTrace(); }
+//        try { TimeUnit.SECONDS.sleep(1); } catch (InterruptedException e) { e.printStackTrace(); }
         System.out.println("testD 测试RT");
-//        int age = 10/0;
+        int age = 10/0;
         return "------testD";
     }
 
